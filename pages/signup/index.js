@@ -19,7 +19,9 @@ export default function Signup() {
         // We just call it because we don't need anything else out of it
         // await fetch("/api/socket");
         console.log("IF problem bbefore this then its problem with server")
-        socket = io("https://htn-2022.vercel.app/api/socket");
+        socket = io(process.env.BASE_URL, {
+            path: "/api/socket",
+          });
         console.log("problem is with socket io() call if error abovve")
     //hi
       };

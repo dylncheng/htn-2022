@@ -14,9 +14,11 @@ export default function Home() {
 
   const socketInitializer = async () => {
     // We just call it because we don't need anything else out of it
-    await fetch("https://htn-2022.vercel.app/api/socket");
+    await fetch("/api/socket");
     console.log("HI")
-    socket = io();
+    socket = io(process.env.BASE_URL, {
+      path: "/api/socket",
+    });
 
     socket.on("newIncomingMessage", (msg) => {
       console.log("hi")
