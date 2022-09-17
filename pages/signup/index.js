@@ -15,9 +15,9 @@ export default function Signup() {
         // We just call it because we don't need anything else out of it
         await fetch("/api/socket");
     
-        socket = io("https://htn-2022.vercel.app/home",{
+        socket = io("/home",{
             cors:{
-                origin:["https://htn-2022.vercel.app/api/socket"],
+                origin:["/api/socket"],
             },        
         });
     //hi

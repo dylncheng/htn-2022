@@ -9,8 +9,6 @@ export default function SocketHandler(req, res) {
     return;
   }
 
-  
-
   const io = new Server(res.socket.server);
   res.socket.server.io = io;
 
