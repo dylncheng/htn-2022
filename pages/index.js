@@ -17,7 +17,7 @@ export default function Home() {
     await fetch("/api/socket");
     console.log("HI")
     socket = io(process.env.BASE_URL, {
-      path: "/socket",
+      path: "/api/socket",
     });
 
     socket.on("newIncomingMessage", (msg) => {

@@ -17,7 +17,7 @@ export default function SocketHandler(req, res) {
         transports: ['websocket', 'polling'],
         credentials: true
     },
-    path: "/socket",
+    path: "/api/socket",
     allowEIO3: true
   });
 
