@@ -9,11 +9,9 @@ export default function SocketHandler(req, res) {
     return;
   }
 
-  console.log(res.socket.server);
-
   const io = new Server(res.socket.server, {
       cors: {
-          origin: "https://htn-2022.vercel.app"
+          origin: ["https://htn-2022.vercel.app", "http://localhost:3000/"]
       }
   });
 
