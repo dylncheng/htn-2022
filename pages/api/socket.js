@@ -11,7 +11,7 @@ export default function SocketHandler(req, res) {
 
   const io = new Server(res.socket.server, {
       cors: {
-          origin: ["https://htn-2022.vercel.app", "https://htn-2022.vercel.app/home", "http://localhost:3000/"],
+          origin: "*",
           methods: ["GET", "POST"],
           allowedHeaders: ['Access-Control-Allow-Origin'],
           credentials: true
