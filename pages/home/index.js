@@ -18,24 +18,23 @@ export default function Home() {
     // We just call it because we don't need anything else out of it
     await fetch("/api/socket");
 
-    socket = io();
+    socket = io("https://htn-2022.vercel.app/home");
 
     socket.on("newIncomingMessage", (msg) => {
       setMessages((currentMsg) => [
         ...currentMsg,
         { name: msg.name },
       ]);
-      console.log(messages);
     });
   };
 
 
   return(
     <>
-        <QRCode value="https://htn-2022.vercel.app/signup"></QRCode>
+        <QRCode value="./signup"></QRCode>
         <ul>
-            {messages.map((message, index) => {
-                return <li key={index}>{message.name}</li>
+            {messages.map((m, index) => {
+                return <li key={index}>{m.name}</li>
             })}
         </ul>
     </>
