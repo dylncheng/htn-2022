@@ -11,7 +11,7 @@ export default function SocketHandler(req, res) {
 
   const io = new Server(2000, {
       cors: {
-        origin: "https://htn-2022.vercel.app/",
+        origin: "http://localhost:3000",
         methods: ["GET", "POST"],
         transports: ['websocket', 'polling'],
         credentials: true
