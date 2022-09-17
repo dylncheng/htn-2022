@@ -9,12 +9,13 @@ export default function SocketHandler(req, res) {
     return;
   }
 
-  console.log(res.socket.server)
+  
 
   const io = new Server(res.socket.server);
   res.socket.server.io = io;
 
   const onConnection = (socket) => {
+    console.log(socket);
     messageHandler(io, socket);
   };
 

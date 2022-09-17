@@ -20,9 +20,9 @@ export default function Home() {
 
     socket = io({
         cors:{
-            origin:["http://localhost:3000/home"],
+            origin:[""],
         },
-        // transports: ['websocket']           
+        transports: ['websocket']           
     });
 
     socket.on("newIncomingMessage", (msg) => {
@@ -45,3 +45,4 @@ export default function Home() {
     </>
   );
 }
+

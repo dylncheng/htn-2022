@@ -17,7 +17,7 @@ export default function Signup() {
     
         socket = io({
             cors:{
-                origin:["http://localhost:3000/home"],
+                origin:[""],
             },
             // transports: ['websocket']           
         });
