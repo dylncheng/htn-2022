@@ -29,7 +29,7 @@ export default function Home() {
       setMessages((currentMsg) => [
         ...currentMsg,
         { name: msg.name },
-      ]);
+      ]); //hi
     });
   };
 
