@@ -18,7 +18,8 @@ export default function SocketHandler(req, res) {
         credentials: true
     },
     path: "/api/socket",
-    allowEIO3: true
+    allowEIO3: true,
+    rejectUnauthorized: false
   });
 
   res.socket.server.io = io;
