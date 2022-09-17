@@ -21,8 +21,7 @@ export default function Home() {
     socket = io("/home",{
         cors:{
             origin:["/home"],
-        },
-        transports: ['websocket']           
+        },        
     });
 
     socket.on("newIncomingMessage", (msg) => {

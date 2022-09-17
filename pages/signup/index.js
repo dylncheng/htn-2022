@@ -18,8 +18,7 @@ export default function Signup() {
         socket = io("/home",{
             cors:{
                 origin:["/home"],
-            },
-            // transports: ['websocket']           
+            },      
         });
     //hi
       };
