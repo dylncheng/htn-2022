@@ -10,7 +10,7 @@ export default function SocketHandler(req, res) {
   }
 
   const io = new Server(2000, {
-    cors: {
+      cors: {
         origin: "https://htn-2022.vercel.app/",
         methods: ["GET", "POST"],
         transports: ['websocket', 'polling'],
@@ -22,7 +22,6 @@ export default function SocketHandler(req, res) {
   res.socket.server.io = io;
 
   const onConnection = (socket) => {
-    console.log(socket);
     messageHandler(io, socket);
   };
 
