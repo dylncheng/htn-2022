@@ -13,9 +13,10 @@ export default function SocketHandler(req, res) {
       cors: {
           origin: "*",
           methods: ["GET", "POST"],
-          allowedHeaders: ['Access-Control-Allow-Origin'],
+        //   allowedHeaders: ['Access-Control-Allow-Origin'],
           credentials: true
-      }
+      },
+      transports: ['websocket']
   });
 
   res.socket.server.io = io;
