@@ -1,4 +1,4 @@
-import { Server } from 'Socket.IO'
+import { Server } from 'socket.io'
 import messageHandler from "../../utils/sockets/messageHandler";
 
 
@@ -16,7 +16,7 @@ const SocketHandler = (req, res) => {
 
     // Define actions inside
     io.on("connection", onConnection);
-    
+
     io.on('connection', socket => {
       socket.on('input-change', msg => {
         socket.broadcast.emit('update-input', msg)
