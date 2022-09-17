@@ -27,6 +27,7 @@ export default function Home() {
         ...currentMsg,
         { name: msg.name },
       ]);
+      // console.log({name: msg.name}); 
     });
   };
 
