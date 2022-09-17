@@ -9,15 +9,18 @@ export default function SocketHandler(req, res) {
     return;
   }
 
-  const io = new Server(2000, {
+
+  const io = new Server(res.socket.server, {
       cors: {
-        origin: "http://localhost:3000",
+        origin: "*",
         methods: ["GET", "POST"],
         transports: ['websocket', 'polling'],
         credentials: true
     },
     allowEIO3: true
   });
+
+  console.log(res.socket.server)
 
   res.socket.server.io = io;
 

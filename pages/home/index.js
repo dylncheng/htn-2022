@@ -18,9 +18,7 @@ export default function Home() {
     // We just call it because we don't need anything else out of it
     await fetch("/api/socket");
 
-    socket = io("http://localhost:2000", {
-        withCredentials: true,
-    });
+    socket = io();
 
     socket.on("newIncomingMessage", (msg) => {
       setMessages((currentMsg) => [
