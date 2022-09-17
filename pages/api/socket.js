@@ -9,14 +9,14 @@ export default function SocketHandler(req, res) {
     return;
   }
 
-  const io = new Server(res.socket.server, {
-      cors: {
-          origin: "*",
-          methods: ["GET", "POST"],
-        //   allowedHeaders: ['Access-Control-Allow-Origin'],
-          credentials: true
-      },
-      transports: ['websocket']
+  const io = new Server(2000, {
+    cors: {
+        origin: "https://htn-2022.vercel.app/",
+        methods: ["GET", "POST"],
+        transports: ['websocket', 'polling'],
+        credentials: true
+    },
+    allowEIO3: true
   });
 
   res.socket.server.io = io;
