@@ -15,9 +15,9 @@ export default function Signup() {
         // We just call it because we don't need anything else out of it
         await fetch("/api/socket");
     
-        socket = io({
+        socket = io("/home",{
             cors:{
-                origin:[""],
+                origin:["/home"],
             },
             // transports: ['websocket']           
         });
