@@ -18,11 +18,7 @@ export default function Home() {
     // We just call it because we don't need anything else out of it
     await fetch("/api/socket");
 
-    socket = io("/home",{
-        cors:{
-            origin:["/api/socket"],
-        },        
-    });
+    socket = io();
 
     socket.on("newIncomingMessage", (msg) => {
       setMessages((currentMsg) => [
@@ -30,6 +26,10 @@ export default function Home() {
         { name: msg.name },
       ]); //hi
     });
+
+    socket.on('connect', () => {
+        console.log('connected')
+      })
   };
 
 
