@@ -1,5 +1,4 @@
 import { Server } from "socket.io";
-import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 import messageHandler from "../../utils/sockets/messageHandler";
 
 export default function SocketHandler(req, res) {
