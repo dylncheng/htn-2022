@@ -30,6 +30,7 @@ export default function Home() {
         ...currentMsg,
         { name: msg.name },
       ]);
+      console.log("message received"); 
       // console.log({name: msg.name}); 
     });
   };

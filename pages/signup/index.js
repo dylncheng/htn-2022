@@ -14,20 +14,20 @@ export default function Signup() {
     const socketInitializer = async () => {
         // We just call it because we don't need anything else out of it
         await fetch("/api/socket");
-    
+
         socket = io({
-            cors:{
-                origin:["http://localhost:3000/home"],
+            cors: {
+                origin: ["http://localhost:3000/home"],
             },
             // transports: ['websocket']           
         });
-    //hi
-      };
+        //hi
+    };
 
     const handleChange = (e) => {
         setName(e.target.value);
     }
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         sendMessage(name)
@@ -37,7 +37,7 @@ export default function Signup() {
         socketInitializer();
     }, [])
 
-    return(
+    return (
         <>
             <h1>SIGNUP PAGE</h1>
             <form onSubmit={handleSubmit}>
