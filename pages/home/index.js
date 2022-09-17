@@ -32,7 +32,7 @@ export default function Home() {
 
   return(
     <>
-        <QRCode value="./signup"></QRCode>
+        <QRCode value="https://htn-2022.vercel.app/signup"></QRCode>
         <ul>
             {messages.map((message, index) => {
                 return <li key={index}>{message.name}</li>
