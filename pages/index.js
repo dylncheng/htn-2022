@@ -14,7 +14,7 @@ export default function Home() {
 
   const socketInitializer = async () => {
     // We just call it because we don't need anything else out of it
-    await fetch("/api/socket");
+    await fetch("https://htn-2022.vercel.app/api/socket");
     console.log("HI")
     socket = io();
 
