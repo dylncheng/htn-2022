@@ -20,7 +20,7 @@ export default function Signup() {
         // await fetch("/api/socket");
         console.log("IF problem bbefore this then its problem with server")
         socket = io(process.env.BASE_URL, {
-            path: "/api/socket",
+            path: "/socket",
           });
         console.log("problem is with socket io() call if error abovve")
     //hi
