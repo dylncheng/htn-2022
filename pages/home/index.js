@@ -18,9 +18,12 @@ export default function Home() {
     // We just call it because we don't need anything else out of it
     await fetch("/api/socket");
 
-    socket = io({cors:{
-        origin:["https://htn-2022.vercel.app/home"]
-    }});
+    socket = io({
+        cors:{
+            origin:["http://localhost:3000/home"],
+        },
+        // transports: ['websocket']           
+    });
 
     socket.on("newIncomingMessage", (msg) => {
       setMessages((currentMsg) => [
