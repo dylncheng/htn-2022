@@ -14,8 +14,9 @@ export default function Signup() {
     const socketInitializer = async () => {
         // We just call it because we don't need anything else out of it
         await fetch("/api/socket");
-    
+        console.log("IF problem bbefore this then its problem with server")
         socket = io();
+        console.log("problem is with socket io() call if error abovve")
     //hi
       };
 
