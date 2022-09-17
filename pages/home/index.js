@@ -18,7 +18,7 @@ export default function Home() {
     // We just call it because we don't need anything else out of it
     await fetch("/api/socket");
 
-    socket = io("/api/socket");
+    socket = io("https://htn-2022-dylncheng.vercel.app/api/socket");
 
     socket.on("newIncomingMessage", (msg) => {
       setMessages((currentMsg) => [
