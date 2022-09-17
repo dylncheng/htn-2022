@@ -2,8 +2,39 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import QRCode from "react-qr-code";
+import io from "socket.io-client";
+import { useState, useEffect, useRef } from "react";
+import { Typography } from '@mui/material';
+
+let socket;
 
 export default function Home() {
+  const [message, setMessage] = useState(null);
+  const socketOpened = useRef(false);
+
+  const socketInitializer = async () => {
+    // We just call it because we don't need anything else out of it
+    await fetch("/api/socket");
+    console.log("HI")
+    socket = io();
+
+    socket.on("newIncomingMessage", (msg) => {
+      console.log("hi")
+      setMessage((msg)); //hi
+    });
+
+    socket.on('connect', () => {
+        console.log('connected')
+      })
+  };
+
+  useEffect(() => {
+    if(!socketOpened.current) {
+      socketOpened.current = true;
+      socketInitializer();
+    }
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +44,11 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <QRCode value="google.com"/>
+        <Typography variant="h1">Not Funny Tony</Typography>
+        <QRCode value="https://htn-2022.vercel.app/signup"></QRCode>
+        {
+          message && <Typography variant="h4">{`Hi, ${message.name.toUpperCase()}!`}</Typography>
+        }
       </main>
 
       <footer className={styles.footer}>

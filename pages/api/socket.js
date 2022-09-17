@@ -20,8 +20,6 @@ export default function SocketHandler(req, res) {
     allowEIO3: true
   });
 
-  console.log(res.socket.server)
-
   res.socket.server.io = io;
 
   const onConnection = (socket) => {
