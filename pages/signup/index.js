@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import io from "socket.io-client";
+import io from "Socket.IO-client";
 
 let socket;
 
@@ -7,21 +7,22 @@ export default function Signup() {
     const [name, setName] = useState("");
 
     const sendMessage = async (name) => {
-        console.log("HEYA")
+        console.log("HEYA"); 
+
+
         socket.emit("createdMessage", { name: name });
     };
 
     const socketInitializer = async () => {
         // We just call it because we don't need anything else out of it
         await fetch("/api/socket");
+    
+        socket = io();
 
-        socket = io({
-            cors: {
-                origin: ["http://localhost:3000/home"],
-            },
-            // transports: ['websocket']           
-        });
-        //hi
+        socket.on('connect', () => {
+            console.log('connected')
+        })
+        
     };
 
     const handleChange = (e) => {

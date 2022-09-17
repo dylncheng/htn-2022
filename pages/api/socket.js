@@ -1,26 +1,20 @@
-import { Server } from "socket.io";
-import messageHandler from "../../utils/sockets/messageHandler";
+import { Server } from 'Socket.IO'
 
-export default function SocketHandler(req, res) {
-  // It means that socket server was already initialised
+const SocketHandler = (req, res) => {
   if (res.socket.server.io) {
-    console.log("Already set up");
-    res.end();
-    return;
+    console.log('Socket is already running')
+  } else {
+    console.log('Socket is initializing')
+    const io = new Server(res.socket.server)
+    res.socket.server.io = io
+
+    io.on('connection', socket => {
+      socket.on('input-change', msg => {
+        socket.broadcast.emit('update-input', msg)
+      })
+    })
   }
-
-  console.log(res.socket.server)
-
-  const io = new Server(res.socket.server);
-  res.socket.server.io = io;
-
-  const onConnection = (socket) => {
-    messageHandler(io, socket);
-  };
-
-  // Define actions inside
-  io.on("connection", onConnection);
-
-  console.log("Setting up socket");
-  res.end();
+  res.end()
 }
+
+export default SocketHandler

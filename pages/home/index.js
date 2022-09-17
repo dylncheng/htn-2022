@@ -18,12 +18,11 @@ export default function Home() {
     // We just call it because we don't need anything else out of it
     await fetch("/api/socket");
 
-    socket = io({
-        cors:{
-            origin:["http://localhost:3000/home"],
-        },
-        // transports: ['websocket']           
-    });
+    socket = io();
+
+    socket.on('connect', () => {
+      console.log('connected')
+    })
 
     socket.on("newIncomingMessage", (msg) => {
       setMessages((currentMsg) => [
@@ -38,7 +37,7 @@ export default function Home() {
 
   return(
     <>
-        <QRCode value="https://htn-2022.vercel.app/signup"></QRCode>
+        <QRCode value="/signup"></QRCode>
         <ul>
             {messages.map((m, index) => {
                 return <li key={index}>{m.name}</li>
@@ -47,3 +46,4 @@ export default function Home() {
     </>
   );
 }
+
