@@ -1,4 +1,4 @@
-import { Button, TextField, Grid } from "@mui/material";
+import { Button, TextField, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import styles from "../../styles/Signup.module.css"
@@ -8,6 +8,8 @@ let socket;
 export default function Signup() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const [isSubmit, setIsSubmit] = useState(false);
+
 
 
     const sendMessage = async () => {
@@ -36,6 +38,7 @@ export default function Signup() {
     
     const handleSubmit = (e) => {
         e.preventDefault();
+        setIsSubmit(true)
         sendMessage()
     }
 
@@ -46,7 +49,8 @@ export default function Signup() {
     return(
         <>
             <main className={styles.main}>
-                <h1>SIGNUP PAGE</h1>
+                <Typography variant="h1">Signup</Typography>
+                <br></br>
                 <form onSubmit={handleSubmit}>
                     <Grid container textAlign={"center"} rowSpacing={3}> 
                         <Grid item xs={12}>
@@ -56,7 +60,7 @@ export default function Signup() {
                             <TextField onChange={handleEmail} id="outlined-required" variant="outlined" label="email"></TextField>
                         </Grid>
                         <Grid item xs={12}>
-                            <Button variant="contained" display="block" type="submit">Start</Button>
+                            <Button variant="contained" display="block" type="submit">Submit</Button>
                         </Grid>
                     </Grid>
                 </form>

@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import QRCode from "react-qr-code";
 import io from "socket.io-client";
 import { useState, useEffect, useRef } from "react";
+import { Button } from "@mui/material";
 import { Typography } from '@mui/material';
 
 let socket;
@@ -34,12 +35,18 @@ export default function Home() {
     });
   };
 
+  // const handleRedirect = async () => {
+  //   await fetch(`/api/getContact?name=${message.name}&email=${message.email}`);
+  // }
+
   useEffect(() => {
     if(!socketOpened.current) {
       socketOpened.current = true;
       socketInitializer();
     }
   }, []);
+
+  // useEffect()
 
   return (
     <div className={styles.container}>
@@ -50,11 +57,19 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Typography variant="h1">Not Funny Tony</Typography>
-        <QRCode value="https://htn-2022.vercel.app/signup"></QRCode>
+        { !message && <Typography variant="h1" textAlign="center">No Funny Teletubbies</Typography>}
         {
-          message && <Typography variant="h4">{`Hi, ${message.name.toUpperCase()}!`}</Typography>
+          !message?<QRCode value="https://htn-2022.vercel.app/signup"></QRCode>:<Typography variant="h1">{`Hi, ${message.name.toUpperCase()}!`}</Typography>
         }
+        {
+          message &&
+          <form method='post' action="/api/contact">
+            <input style={{display:'none'}} name="name" value={message.name}></input>
+            <input style={{display:'none'}} name="email" value={message.email}></input>
+            <Button variant="contained" type="submit">Start</Button>
+          </form>
+        }
+        { !message && <Typography variant="h4">Scan here to start</Typography>}
       </main>
 
       <footer className={styles.footer}>

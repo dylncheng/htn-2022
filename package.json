@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 8080",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 8080",
     "lint": "next lint"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.5",
     "next": "12.3.0",
+    "nextjs-cors": "^2.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-qr-code": "^2.0.8",
