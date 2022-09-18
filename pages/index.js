@@ -30,8 +30,7 @@ export default function Home() {
       })
 
     socket.on("connect_error", (err) => {
-      console.log(`connect_error due to ${err.message}`);
-      socket.connect();
+      console.log(`connect_error due to ${err}`);
     });
   };
 
