@@ -19,6 +19,6 @@
 - socket.io
 
 ## What we learned
-- The basics of create smart contracts
+- The basics of creating smart contracts
 - Web hooks
 - Integration of multi-technology apps
